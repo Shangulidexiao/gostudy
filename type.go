@@ -1,6 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
+
+type Student struct {
+	name string
+	age  int
+}
 
 func main() {
 	/*声明变量*/
@@ -46,11 +54,35 @@ func main() {
 	/*复数*/
 	var cc complex64 = 5 + 5i
 	fmt.Println(cc)
-	fmt.Println(manyArgv)
+	fmt.Println(manyArgv())
+
+	f, err := os.Open("hello.go")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var fcont []byte
+	f.Read(fcont)
+	fmt.Println(fcont)
+
+	for i := 1; i < 10; i++ {
+		fmt.Println(i)
+	}
+
+
+	j := 0
+	for j < 10 {
+		fmt.Println(j)
+		j++
+	}
+
+	list := []string {"a","b"}
+	for k,v := range list {
+		fmt.Printf("%d:%v\n",k,v)
+	}
 }
 
-func manyArgv() {
-	var arr []int
-	arr[0] = 1
+func manyArgv() [3]int {
+	arr := [3]int{1, 2, 3}
 	return arr
 }

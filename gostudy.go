@@ -1,9 +1,10 @@
 package main
 
 import (
-	"tools/echo"
+	"os"
+	"tools"
 )
 
 func main() {
-	echo.forEcho()
+	tools.Lissajous(os.Stdout)
 }

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"tools"
+	"gostudy/tools"
 )
 
 func main() {
-	tools.PrintDefaultValue()
+	tools.MyMap()
 }

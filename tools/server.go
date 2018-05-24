@@ -8,7 +8,7 @@ import (
 	"sync"
 )
 
-var mu sync.Mutex
+var mu1 sync.Mutex
 var count int
 
 func EchoUrl() {
@@ -18,14 +18,14 @@ func EchoUrl() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	mu.Lock()
+	mu1.Lock()
 	count++
-	mu.Unlock()
+	mu1.Unlock()
 	fmt.Fprintf(w, "URL.Path = %q\n", r.URL.RawPath)
 }
 
 func counter(w http.ResponseWriter, r *http.Request) {
-	mu.Lock()
+	mu1.Lock()
 	fmt.Fprintf(w, "Count %d\n", count)
-	mu.Unlock()
+	mu1.Unlock()
 }

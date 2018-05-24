@@ -14,6 +14,11 @@ func MyMap() {
 	if stu, ok := students["001"]; !ok {
 		fmt.Println("该学生不存在")
 	} else {
+		updateStudent(&stu)
 		fmt.Println(stu)
 	}
+}
+
+func updateStudent(stu *Student) {
+	stu.sex = 2
 }

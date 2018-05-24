@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	tools.MyMap()
+	tools.Oop()
 }

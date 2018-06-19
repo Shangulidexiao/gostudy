@@ -1,14 +1,15 @@
 package main
 
-import (
-	"gostudy/tools"
-)
+import "gostudy/ch3"
+
+// go 语言学习
 
 func main() {
-	tools.ExecClock()
+	ch3.ExecString()
 }
 
-func twoSum(nums []int, target int) []int {
+// 计算两个数的和
+func TwoSum(nums []int, target int) []int {
 	s := make([]int, 2)
 	for pi, pv := range nums {
 		for i, v := range nums {

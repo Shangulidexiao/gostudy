@@ -8,8 +8,8 @@ import (
 )
 
 type Point struct {
-	X string `圆点`
-	Y string `圆点`
+	X string
+	Y string
 }
 
 type Circle struct {

@@ -1,6 +1,6 @@
 package main
 
-import "ch3"
+import "gostudy/ch3"
 
 // go 语言学习
 

@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "D:\\WAMP\\www\\delivery"
+		},
+		{
+			"path": "D:\\WAMP\\Apache\\htdocs\\SVN\\4kgarden\\cms-backstage\\trunk\\cms-backstage\\WebRoot\\js"
 		}
 	],
 	"settings": {}

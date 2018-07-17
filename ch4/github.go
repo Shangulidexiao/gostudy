@@ -9,6 +9,8 @@ type IssuseResult struct {
 }
 
 type Issuse struct {
+	HTMLURL string `json:"url"`
+	RepositoryUrl string `json:"repository_url"`
 
 }
 

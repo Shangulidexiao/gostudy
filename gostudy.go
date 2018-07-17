@@ -1,11 +1,11 @@
 package main
 
-import "gostudy/ch3"
+import "gostudy/ch4"
 
 // go 语言学习
 
 func main() {
-	ch3.ExecString()
+	ch4.Exec()
 }
 
 // 计算两个数的和

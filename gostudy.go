@@ -1,23 +1,7 @@
 package main
 
-import "gostudy/ch3"
-
-// go 语言学习
+import "gostudy/splider"
 
 func main() {
-	ch3.ExecString()
-}
-
-// 计算两个数的和
-func TwoSum(nums []int, target int) []int {
-	s := make([]int, 2)
-	for pi, pv := range nums {
-		for i, v := range nums {
-			if pv+v == target && pi != i {
-				s[0], s[1] = pi, i
-				return s
-			}
-		}
-	}
-	return s
+	splider.ExecSplider()
 }

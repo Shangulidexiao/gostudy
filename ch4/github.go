@@ -3,6 +3,8 @@ package ch4
 import (
 	"encoding/json"
 	"fmt"
+	"html/template"
+	"io/ioutil"
 	"net/http"
 	"time"
 )
@@ -29,7 +31,7 @@ type User struct {
 	Login   string `json:"login"`
 }
 
-func GetIssues() {
+func GetIssues() IssuseResult {
 	var result IssuseResult
 
 	resp, err := http.Get(issuseUrl)
@@ -47,9 +49,15 @@ func GetIssues() {
 		fmt.Println(err)
 	}
 
-	fmt.Printf("%s", result)
+	return result
 }
 
 func ExecIssuse() {
-	GetIssues()
+	var result IssuseResult = GetIssues()
+	tpl, err := ioutil.ReadFile(`E:\go\src\gostudy\ch4\issuse.html`)
+	if err != nil {
+
+	}
+	template.New(tpl)
+	fmt.Println(result, tpl)
 }

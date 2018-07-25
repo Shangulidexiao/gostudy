@@ -5,7 +5,7 @@ import "gostudy/ch4"
 // go 语言学习
 
 func main() {
-	ch4.Exec()
+	ch4.ExecIssuse()
 }
 
 // 计算两个数的和

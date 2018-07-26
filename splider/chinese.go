@@ -1,62 +1,70 @@
 package splider
 
 import (
-	"bytes"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
 
-	"golang.org/x/text/encoding/simplifiedchinese"
-
 	"golang.org/x/net/html"
-	"golang.org/x/text/transform"
 )
 
-const domain = "http://xh.5156edu.com"
-const initUrl = domain + "/pinyi.html"
+func Exec() {
+	htmlNode, err := download("http://www.xgo.cn")
 
-func ExecSplider() {
-	response, err := http.Get(initUrl)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer response.Body.Close()
-	doc, err := html.Parse(response.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(visit(nil, doc))
 
+	outline(nil, htmlNode)
 }
-func visit(links []map[string]string, n *html.Node) []map[string]string {
-	if n.Type == html.ElementNode && n.Data == "a" {
-		for _, attr := range n.Attr {
-			if attr.Key == "href" && strings.HasPrefix(attr.Val, "html2") {
-				links = append(links, map[string]string{gbktoutf8(n.FirstChild.Data): attr.Val})
-			}
-		}
+func findLinks(links []string, htmlNode *html.Node) []string {
+	if url := link(htmlNode); url != "" {
+		links = append(links, url)
 	}
-	for c := n.FirstChild; c != nil; c = c.NextSibling {
-		links = visit(links, c)
+	for c := htmlNode.FirstChild; c != nil; c = c.NextSibling {
+		links = findLinks(links, c)
 	}
 	return links
 }
 
-func chinese(url string) {
-
+func link(htmlNode *html.Node) (url string) {
+	if strings.ToLower(htmlNode.Data) != "img" || htmlNode.Type != html.ElementNode {
+		return
+	}
+	for _, a := range htmlNode.Attr {
+		if strings.ToLower(a.Key) == "src" {
+			url = a.Val
+			break
+		}
+	}
+	return
 }
-func insertDb(pin, han string) bool {
 
-	return true
+func download(url string) (*html.Node, error) {
+	response, err := http.Get(url)
+	if err != nil {
+		return &html.Node{}, err
+	}
+	defer response.Body.Close()
+	if response.StatusCode != http.StatusOK {
+		return &html.Node{}, fmt.Errorf("访问 %s:%s", url, response.Status)
+	}
+	htmlNode, err := html.Parse(response.Body)
+	if err != nil {
+		return &html.Node{}, err
+	}
+	return htmlNode, nil
 }
 
-func exists(han string) bool {
-	return true
-}
-
-func gbktoutf8(gbk string) string {
-	utf8, _ := ioutil.ReadAll(transform.NewReader(bytes.NewReader([]byte(gbk)), simplifiedchinese.GBK.NewEncoder()))
-	return string(utf8)
+func outline(stack []string, htmlNode *html.Node) {
+	if htmlNode.Type == html.ElementNode {
+		stack = append(stack, htmlNode.Data)
+		fmt.Println(stack)
+	}
+	fmt.Println(htmlNode.FirstChild.NextSibling.FirstChild)
+	return
+	for c := htmlNode.FirstChild; c != nil; c = c.NextSibling {
+		outline(stack, c)
+	}
 }

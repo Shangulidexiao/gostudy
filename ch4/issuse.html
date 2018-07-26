@@ -8,6 +8,19 @@
 </head>
 <body>
     {{.TotalCount}} issuses
-    
+    <table>
+        <tr>
+            <th>数量</th>
+            <th>标题</th>
+            <th>url</th>
+        </tr>
+        {{range .Item}}
+        <tr>
+            <td>{{.Number}}</td>
+            <td>{{.Title}}</td>
+            <td>{{.HTMLURL}}</td>
+        </tr>
+        {{end}}
+    </table>
 </body>
 </html>

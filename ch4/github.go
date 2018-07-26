@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -58,6 +59,7 @@ func ExecIssuse() {
 	if err != nil {
 
 	}
-	template.New(tpl)
-	fmt.Println(result, tpl)
+
+	t, err := template.New(`a`).Parse(string(tpl))
+	t.Execute(os.Stdout, result)
 }

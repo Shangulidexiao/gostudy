@@ -6,15 +6,7 @@ import (
 )
 
 func Exec() {
-	paint(pre, last)
-
-	fmt.Println(str("ABC"))
-
-	sqrt := squares()
-
-	for i := 0; i < 5; i++ {
-		fmt.Println(sqrt())
-	}
+	test()
 }
 
 func pre() {
@@ -23,13 +15,13 @@ func pre() {
 func last() {
 	fmt.Println("-------")
 }
-func paint(pre func(), last func()) {
+func paint(pre, last func()) {
 	pre()
 
 	fmt.Println("now is now")
 
 	s := func(num int) bool {
-		if num % 2 == 0 {
+		if num%2 == 0 {
 			return true
 		} else {
 			return false

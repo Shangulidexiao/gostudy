@@ -10,7 +10,7 @@ import (
 )
 
 func Exec() {
-	htmlNode, err := download("http://www.xgo.cn")
+	htmlNode, err := download("http://daymenu.cn")
 
 	if err != nil {
 		log.Fatal(err)
@@ -62,8 +62,7 @@ func outline(stack []string, htmlNode *html.Node) {
 		stack = append(stack, htmlNode.Data)
 		fmt.Println(stack)
 	}
-	fmt.Println(htmlNode.FirstChild.NextSibling.FirstChild)
-	return
+
 	for c := htmlNode.FirstChild; c != nil; c = c.NextSibling {
 		outline(stack, c)
 	}

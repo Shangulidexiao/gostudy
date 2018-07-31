@@ -1,11 +1,11 @@
 package main
 
-import "gostudy/splider"
+import "gostudy/ch5"
 
 // go 语言学习
 
 func main() {
-	splider.Exec()
+	ch5.Exec()
 }
 
 // 计算两个数的和

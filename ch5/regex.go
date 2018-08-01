@@ -13,6 +13,6 @@ func test() {
 	fmt.Println(mobileRegexp.MatchString("18335831710"))
 	fmt.Println(mobileCode.FindString("--1453-"))
 	fmt.Println(mobileCode.Split("---4536+++", 3))
-	fmt.Println(s.FindAllString("da,d,d,a,d,d", 300))
+	fmt.Println(s.FindAllString("da,d,d,a,d,d", -1))
 
 }

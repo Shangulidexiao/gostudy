@@ -6,8 +6,10 @@ import (
 	"log"
 )
 
+//ByteConter is sum of bytes data
 type ByteConter int
 
+//WrodConter is sum of word
 type WrodConter int
 
 func (c *ByteConter) Write(b []byte) (int, error) {

@@ -7,10 +7,12 @@ import (
 	"os"
 )
 
+//MySPrintf is test fmt.Fprintf
 func MySPrintf(template string, number int) {
 	fmt.Fprintf(os.Stdout, template, number)
 }
 
+//FReadString  Read File Data
 func FReadString(path string) {
 	buf := make([]byte, 1024)
 

@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+//Game game struct
 type Game struct {
 	name string
 }
@@ -17,6 +18,7 @@ func (g *Game) String() string {
 	return g.name
 }
 
+//Set is Game Flag function
 func (g *Game) Set(s string) error {
 	var name string
 	n, err := fmt.Sscanf(s, "%s", &name)
@@ -30,6 +32,7 @@ func (g *Game) Set(s string) error {
 	return nil
 }
 
+//GameFlag is defined CommandLine Flag
 func GameFlag(name string, value Game, usage string) *Game {
 	f := gameFlag{value}
 	flag.CommandLine.Var(&f, name, usage)

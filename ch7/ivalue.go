@@ -17,5 +17,7 @@ func ivalue() {
 
 	var x interface{} = []int{1, 2, 3, 4}
 	x = []string{"a", "b"}
-	fmt.Printf("%T\n", x)
+	fmt.Printf("%T\n", x) //真的可以写中文了
+
+	ff()
 }
